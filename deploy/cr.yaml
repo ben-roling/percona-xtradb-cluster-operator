@@ -25,16 +25,17 @@ spec:
 #      name: special-selfsigned-issuer
 #      kind: ClusterIssuer
 #      group: cert-manager.io
-  allowUnsafeConfigurations: false
+  allowUnsafeConfigurations: true
 #  pause: false
   updateStrategy: SmartUpdate
   upgradeOptions:
     versionServiceEndpoint: https://check.percona.com
-    apply: 8.0-recommended
+    apply: 5.7-recommended
     schedule: "0 4 * * *"
   pxc:
     size: 3
-    image: percona/percona-xtradb-cluster:8.0.22-13.1
+    # image: percona/percona-xtradb-cluster:8.0.22-13.1
+    image: percona/percona-xtradb-cluster:5.7.33-31.49
     autoRecovery: true
 #    schedulerName: mycustom-scheduler
 #    readinessDelaySec: 15
@@ -74,8 +75,8 @@ spec:
 #      name: my-sidecar-1
     resources:
       requests:
-        memory: 1G
-        cpu: 600m
+        # memory: 1G
+        # cpu: 600m
 #        ephemeral-storage: 1G
 #      limits:
 #        memory: 1G
@@ -91,7 +92,7 @@ spec:
 #        memory: 2G
 #        cpu: 600m
     affinity:
-      antiAffinityTopologyKey: "kubernetes.io/hostname"
+      antiAffinityTopologyKey: "none"
 #      advanced:
 #        nodeAffinity:
 #          requiredDuringSchedulingIgnoredDuringExecution:
@@ -172,8 +173,8 @@ spec:
 #      name: my-sidecar-1
     resources:
       requests:
-        memory: 1G
-        cpu: 600m
+        # memory: 1G
+        # cpu: 600m
 #      limits:
 #        memory: 1G
 #        cpu: 700m
@@ -189,7 +190,7 @@ spec:
 #        cpu: 600m
 #    serviceAccountName: percona-xtradb-cluster-operator-workload
     affinity:
-      antiAffinityTopologyKey: "kubernetes.io/hostname"
+      antiAffinityTopologyKey: "none"
 #      advanced:
 #        nodeAffinity:
 #          requiredDuringSchedulingIgnoredDuringExecution:
@@ -283,8 +284,8 @@ spec:
 #      name: my-sidecar-1
     resources:
       requests:
-        memory: 1G
-        cpu: 600m
+        # memory: 1G
+        # cpu: 600m
 #      limits:
 #        memory: 1G
 #        cpu: 700m
@@ -300,7 +301,7 @@ spec:
 #        cpu: 600m
 #    serviceAccountName: percona-xtradb-cluster-operator-workload
     affinity:
-      antiAffinityTopologyKey: "kubernetes.io/hostname"
+      antiAffinityTopologyKey: "none"
 #      advanced:
 #        nodeAffinity:
 #          requiredDuringSchedulingIgnoredDuringExecution:
